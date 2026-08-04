@@ -7,7 +7,7 @@ export default function Skills() {
       <div className="wrap">
         <Reveal className="sec-head">
           <h2>Stack</h2>
-          <span className="sec-note">{'// tools chosen, not collected'}</span>
+          <span className="sec-note">{'// the ones I actually reach for'}</span>
         </Reveal>
         <div className="skill-cols">
           {SKILLS.map((col, i) => (

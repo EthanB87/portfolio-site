@@ -28,7 +28,15 @@ export default function ProjectCard({ project, d }) {
       <article ref={inner} className="card" onPointerMove={onMove} onPointerLeave={onLeave}>
         <div className="corner" />
         <div className="card-top">
-          <h3>{project.title}</h3>
+          <h3>
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                {project.title}
+              </a>
+            ) : (
+              project.title
+            )}
+          </h3>
           <span className={`tag-status${project.live ? ' live' : ''}`}>{project.status}</span>
         </div>
         <p>{project.blurb}</p>
@@ -42,6 +50,20 @@ export default function ProjectCard({ project, d }) {
             <span key={s}>{s}</span>
           ))}
         </div>
+        {(project.link || project.repo) && (
+          <div className="card-links">
+            {project.link && (
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                Live ↗
+              </a>
+            )}
+            {project.repo && (
+              <a href={project.repo} target="_blank" rel="noopener noreferrer">
+                GitHub ↗
+              </a>
+            )}
+          </div>
+        )}
       </article>
     </div>
   )

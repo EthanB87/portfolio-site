@@ -16,9 +16,9 @@ export default function Hero() {
           from <span className="ember">pixel</span> to pipeline.
         </h1>
         <p className="hero-sub rise d3">
-          I'm <b>Ethan Brockman</b> — a full-stack engineer who sweats the front end. I ship React
-          + TypeScript products end-to-end: interfaces people enjoy, backed by APIs and cloud
-          infrastructure that hold up in production.
+          I'm <b>Ethan Brockman</b>, a full-stack engineer who does his best work on the front end.
+          I build React and TypeScript products, from the interface down to the APIs and cloud they
+          run on. Then I ship them and keep them running when real people are using them.
         </p>
         <div className="hero-meta rise d4">
           <Magnetic href="#work" className="primary">

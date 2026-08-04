@@ -1,4 +1,3 @@
-import { ABOUT_FACTS } from '../data'
 import Reveal from './Reveal'
 
 export default function About() {
@@ -7,38 +6,21 @@ export default function About() {
       <div className="wrap">
         <Reveal className="sec-head">
           <h2>About</h2>
-          <span className="sec-note">{'// the elevation map behind this page'}</span>
+          <span className="sec-note">{'// the short version'}</span>
         </Reveal>
-        <div className="about-grid">
+        <div className="about-grid single">
           <Reveal>
             <p>
-              I'm a full-stack engineer in Waterloo who genuinely cares how software{' '}
-              <b>looks and feels</b> — not just whether it works. By day I build and operate
-              production systems at Equitable Life. Nights and weekends, I design, build, and sell
-              my own SaaS products, which means I've felt every layer of the stack: the pixel, the
-              API, the invoice, and the customer email.
-            </p>
-            <p>
-              The terrain behind the hero of this page is a nod to where I am when I'm not
-              shipping: <b>hiking, camping, and canoeing</b> somewhere off the tourist circuit.
-              It's generated live — contour lines drawn with marching squares over animated noise,
-              reacting to your cursor like elevation. Open the <b>⌘K palette</b> for the fast way
-              around.
+              I'm a full-stack engineer in Waterloo. I care about how software{' '}
+              <b>feels to use</b>, and I get to prove it at every layer. By day I build and run
+              production systems at Equitable Life. Nights and weekends I build my own products and
+              take on the occasional client, and I handle all of it, from the design down to the
+              support emails.
             </p>
             <p>
               I'm looking for a team where front-end craft is taken seriously and engineers are
               trusted with the whole problem.
             </p>
-          </Reveal>
-          <Reveal>
-            <div className="fact-list">
-              {ABOUT_FACTS.map(([k, v]) => (
-                <div key={k} className="fact">
-                  <span className="k">{k}</span>
-                  <span className="v">{v}</span>
-                </div>
-              ))}
-            </div>
           </Reveal>
         </div>
       </div>
