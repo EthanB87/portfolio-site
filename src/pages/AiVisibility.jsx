@@ -28,8 +28,7 @@ export default function AiVisibility() {
       >
         <p>
           I measure how often ChatGPT, Gemini and Claude recommend your business, fix the listings,
-          pages and facts they read, and re-test every month. For local service businesses in the
-          Greater Toronto Area.
+          pages and facts they read, and re-test every month. For local service businesses in Ontario.
         </p>
       </PageHero>
 

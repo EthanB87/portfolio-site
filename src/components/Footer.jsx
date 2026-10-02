@@ -5,8 +5,7 @@ export default function Footer() {
     <footer>
       <div className="wrap footer-inner">
         <p>
-          © 2026 {BUSINESS.name}. Websites, AI visibility and AI consulting in the{' '}
-          {BUSINESS.area}.
+          © 2026 {BUSINESS.name}. Websites, AI visibility and AI consulting in {BUSINESS.area}.
         </p>
         <p className="footer-links">
           <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>

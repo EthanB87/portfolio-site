@@ -1,13 +1,14 @@
-import { BUSINESS, GTA_AREAS, VISIBILITY } from './data'
+import { BUSINESS, VISIBILITY } from './data'
 
 const servicesUrl = `${BUSINESS.url}/services/`
 const visibilityUrl = `${BUSINESS.url}/services/ai-visibility/`
 const consultingUrl = `${BUSINESS.url}/services/ai-consulting/`
 
-const areaServed = [
-  { '@type': 'AdministrativeArea', name: 'Greater Toronto Area, Ontario' },
-  ...GTA_AREAS.map((name) => ({ '@type': 'AdministrativeArea', name })),
-]
+const areaServed = {
+  '@type': 'AdministrativeArea',
+  name: 'Ontario',
+  containedInPlace: { '@type': 'Country', name: 'Canada' },
+}
 
 function offer(name, service, url, price, { monthly = false } = {}) {
   const o = {
@@ -46,7 +47,7 @@ export function businessJsonLd() {
     url: `${BUSINESS.url}/`,
     email: BUSINESS.email,
     description:
-      'AI visibility, websites and AI consulting for local and service businesses in the Greater Toronto Area.',
+      'AI visibility, websites and AI consulting for local and service businesses in Ontario.',
     address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' },
     areaServed,
     makesOffer: [
