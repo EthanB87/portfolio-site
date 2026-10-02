@@ -1,18 +1,15 @@
 import { PROJECTS } from '../data'
-import Reveal from './Reveal'
 import ProjectCard from './ProjectCard'
 
 export default function Work() {
   return (
-    <section id="work">
+    <section id="work" className="work tinted">
       <div className="wrap">
-        <Reveal className="sec-head">
-          <span className="label">Recent work</span>
-          <h2>Built for real businesses and real customers.</h2>
-        </Reveal>
+        <h2>Recent work</h2>
+        <p className="lede">A client shop that runs itself, and two products of my own.</p>
         <div className="work-grid">
-          {PROJECTS.map((p, i) => (
-            <ProjectCard key={p.title} project={p} d={i} />
+          {PROJECTS.map((p) => (
+            <ProjectCard key={p.title} project={p} />
           ))}
         </div>
       </div>

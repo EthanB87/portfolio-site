@@ -46,7 +46,7 @@ export function businessJsonLd() {
     url: `${BUSINESS.url}/`,
     email: BUSINESS.email,
     description:
-      'Websites, AI visibility and AI consulting for small and mid-sized businesses in the Greater Toronto Area.',
+      'AI visibility, websites and AI consulting for local and service businesses in the Greater Toronto Area.',
     address: { '@type': 'PostalAddress', addressRegion: 'ON', addressCountry: 'CA' },
     areaServed,
     makesOffer: [

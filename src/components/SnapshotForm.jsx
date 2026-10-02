@@ -12,6 +12,7 @@ export default function SnapshotForm() {
     const subject = `Free AI visibility snapshot: ${f.get('business')}`
     const body = [
       `Business name: ${f.get('business')}`,
+      `Service: ${f.get('service')}`,
       `Website: ${f.get('website')}`,
       `Town or city: ${f.get('town')}`,
       `Email: ${f.get('email')}`,
@@ -23,10 +24,20 @@ export default function SnapshotForm() {
   }
 
   return (
-    <form className="snapshot-form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit}>
       <div className="field">
         <label htmlFor="sf-business">Business name</label>
         <input id="sf-business" name="business" type="text" autoComplete="organization" required />
+      </div>
+      <div className="field">
+        <label htmlFor="sf-service">What you do</label>
+        <input
+          id="sf-service"
+          name="service"
+          type="text"
+          placeholder="e.g. plumbing, dental clinic, bookkeeping"
+          required
+        />
       </div>
       <div className="field">
         <label htmlFor="sf-website">Website</label>
@@ -42,7 +53,7 @@ export default function SnapshotForm() {
       </div>
       <div className="field">
         <label htmlFor="sf-town">Town or city</label>
-        <input id="sf-town" name="town" type="text" placeholder="e.g. Oakville" required />
+        <input id="sf-town" name="town" type="text" placeholder="e.g. Mississauga" required />
       </div>
       <div className="field">
         <label htmlFor="sf-email">Your email</label>

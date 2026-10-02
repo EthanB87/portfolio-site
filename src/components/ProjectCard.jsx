@@ -1,9 +1,29 @@
 import { useEffect, useRef, useState } from 'react'
-import useReveal from '../hooks/useReveal'
-import useReducedMotion from '../hooks/useReducedMotion'
 
-// Phone-shaped screenshot; shows a labelled placeholder until the image exists.
-function Shot({ src, caption }) {
+const prefersReducedMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Tilt the phone toward the mouse and move the glare with it. Mouse only: touch
+// devices get the swipeable row instead.
+function tilt(e) {
+  if (e.pointerType !== 'mouse' || prefersReducedMotion()) return
+  const el = e.currentTarget
+  const r = el.getBoundingClientRect()
+  const px = (e.clientX - r.left) / r.width
+  const py = (e.clientY - r.top) / r.height
+  el.style.setProperty('--ry', `${(px - 0.5) * 18}deg`)
+  el.style.setProperty('--rx', `${(0.5 - py) * 12}deg`)
+  el.style.setProperty('--gx', `${px * 100}%`)
+  el.style.setProperty('--gy', `${py * 100}%`)
+}
+function untilt(e) {
+  const el = e.currentTarget
+  el.style.setProperty('--ry', '0deg')
+  el.style.setProperty('--rx', '0deg')
+}
+
+// A screenshot shown as a phone; shows a labelled placeholder until the image exists.
+function Shot({ src, caption, i }) {
   const [missing, setMissing] = useState(false)
   const img = useRef(null)
   // On prerendered pages the image can fail before React attaches onError.
@@ -12,135 +32,113 @@ function Shot({ src, caption }) {
     if (el && el.complete && el.naturalWidth === 0) setMissing(true)
   }, [])
   return (
-    <figure className="shot">
-      <div className="shot-frame">
-        {missing ? (
-          <div className="shot-ph">
-            screenshot
-            <br />
-            coming soon
-          </div>
-        ) : (
-          <img ref={img} src={src} alt={caption} loading="lazy" onError={() => setMissing(true)} />
-        )}
+    <figure className="shot" style={{ '--i': i }} onPointerMove={tilt} onPointerLeave={untilt}>
+      <div className="shot-device">
+        <div className="shot-frame">
+          {missing ? (
+            <div className="shot-ph">Screenshot coming soon</div>
+          ) : (
+            <img ref={img} src={src} alt={caption} loading="lazy" onError={() => setMissing(true)} />
+          )}
+        </div>
       </div>
       <figcaption>{caption}</figcaption>
     </figure>
   )
 }
 
-function FeaturedBody({ project }) {
+function Featured({ project }) {
+  const shots = useRef(null)
+
+  // Swing the phones into place the first time they scroll into view.
+  useEffect(() => {
+    const el = shots.current
+    const io = new IntersectionObserver(
+      ([en]) => {
+        if (en.isIntersecting) {
+          el.classList.add('in')
+          io.disconnect()
+        }
+      },
+      { threshold: 0.25 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <div className="feat-grid">
-      <div className="feat-text">
-        <div className="label feat-eyebrow">{project.eyebrow}</div>
-        <div className="card-top">
-          <h3>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              {project.title}
-            </a>
-          </h3>
-          <span className={`tag-status${project.live ? ' live' : ''}`}>{project.status}</span>
-        </div>
+    <article className={`project featured line-${project.line}`}>
+      <div className="featured-text">
+        <p className="project-kind">
+          {project.kind}, <span className="status live">{project.status.toLowerCase()}</span>
+        </p>
+        <h3>{project.title}</h3>
         {project.story.map((para) => (
           <p key={para}>{para}</p>
         ))}
-        <ul className="card-feats">
+      </div>
+      <div className="featured-details">
+        <ul className="ticks">
           {project.feats.map((f) => (
             <li key={f}>{f}</li>
           ))}
         </ul>
-        <div className="feat-actions">
-          <a className="btn primary" href={project.link} target="_blank" rel="noopener noreferrer">
-            Visit {project.linkLabel} ↗
+        <div className="actions">
+          <a className="btn" href={project.link} target="_blank" rel="noopener noreferrer">
+            Visit {project.linkLabel}
           </a>
+          {project.caseStudy && (
+            <a className="text-link case-link" href={project.caseStudy.href}>
+              {project.caseStudy.label}
+            </a>
+          )}
         </div>
+        <p className="stack-line">Built with {project.stack.join(', ')}</p>
       </div>
-      <div className="feat-shots">
-        {project.shots.map((s) => (
-          <Shot key={s.src} {...s} />
+      {/* Big enough to read the screens. On phones it becomes a swipeable row, so it's
+          focusable for keyboard scrolling. */}
+      <div
+        ref={shots}
+        className="shots"
+        role="region"
+        aria-label="Screenshots of the shop"
+        tabIndex={0}
+      >
+        {project.shots.map((s, i) => (
+          <Shot key={s.src} {...s} i={i} />
         ))}
       </div>
-      <div className="feat-cta">
-        <p>{project.cta}</p>
-        <a href="#contact">Let's talk →</a>
-      </div>
-      <div className="stack-line feat-stack">Built with {project.stack.join(' · ')}</div>
-    </div>
+    </article>
   )
 }
 
-export default function ProjectCard({ project, d }) {
-  const revealRef = useReveal(d)
-  const reduced = useReducedMotion()
-  const inner = useRef(null)
-
-  const onMove = (e) => {
-    if (reduced) return
-    const el = inner.current
-    const r = el.getBoundingClientRect()
-    const px = (e.clientX - r.left) / r.width
-    const py = (e.clientY - r.top) / r.height
-    el.style.setProperty('--mx', px * 100 + '%')
-    el.style.setProperty('--my', py * 100 + '%')
-    const tilt = project.featured ? 1.5 : 5 // big card: keep the lean subtle
-    el.style.transform = `perspective(900px) rotateX(${(0.5 - py) * tilt}deg) rotateY(${
-      (px - 0.5) * tilt
-    }deg) translateY(-2px)`
-  }
-  const onLeave = () => {
-    if (inner.current) inner.current.style.transform = 'perspective(900px) rotateX(0) rotateY(0)'
-  }
-
+export default function ProjectCard({ project }) {
+  if (project.featured) return <Featured project={project} />
   return (
-    <div ref={revealRef} className={`reveal${project.featured ? ' featured' : ''}`}>
-      <article
-        ref={inner}
-        className={`card${project.featured ? ' card-featured' : ''}`}
-        onPointerMove={onMove}
-        onPointerLeave={onLeave}
-      >
-        {project.featured ? (
-          <FeaturedBody project={project} />
-        ) : (
-          <>
-            <div className="card-top">
-              <h3>
-                {project.link ? (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    {project.title}
-                  </a>
-                ) : (
-                  project.title
-                )}
-                {project.kind && <span className="kind">{project.kind}</span>}
-              </h3>
-              <span className={`tag-status${project.live ? ' live' : ''}`}>{project.status}</span>
-            </div>
-            <p>{project.blurb}</p>
-            <ul className="card-feats">
-              {project.feats.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-            <div className="stack-line">Built with {project.stack.join(' · ')}</div>
-            {(project.link || project.repo) && (
-              <div className="card-links">
-                {project.link && (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    Visit site ↗
-                  </a>
-                )}
-                {project.repo && (
-                  <a href={project.repo} target="_blank" rel="noopener noreferrer">
-                    View code ↗
-                  </a>
-                )}
-              </div>
-            )}
-          </>
+    <article className="project">
+      <p className="project-kind">
+        {project.kind}, <span className="status">{project.status.toLowerCase()}</span>
+      </p>
+      <h3>{project.title}</h3>
+      <p>{project.blurb}</p>
+      <ul className="ticks">
+        {project.feats.map((f) => (
+          <li key={f}>{f}</li>
+        ))}
+      </ul>
+      <p className="stack-line">Built with {project.stack.join(', ')}</p>
+      <p className="project-links">
+        {project.link && (
+          <a className="text-link" href={project.link} target="_blank" rel="noopener noreferrer">
+            Visit site
+          </a>
         )}
-      </article>
-    </div>
+        {project.repo && (
+          <a className="text-link" href={project.repo} target="_blank" rel="noopener noreferrer">
+            View code
+          </a>
+        )}
+      </p>
+    </article>
   )
 }

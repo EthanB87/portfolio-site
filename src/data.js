@@ -1,7 +1,8 @@
 // All site content lives here. Edit this file to update the site.
 
 // One source of truth for business details. Used in page copy, footer, forms and JSON-LD,
-// so the name and contact details stay identical everywhere.
+// so the name and contact details stay identical everywhere. The phone number is not here
+// on purpose: see src/components/CallButton.jsx.
 export const BUSINESS = {
   name: "Ethan Brockman",
   url: "https://ethanbrockman.tech",
@@ -15,12 +16,74 @@ export const LINKS = {
   github: "https://github.com/EthanB87",
 };
 
+// ---------- the three lines ----------
+// Each service is a line on the route map, in the order a customer meets a business:
+// they find it, they choose it, and the business runs well enough to keep up.
+export const LINES = [
+  {
+    key: "ai-visibility",
+    color: "orange",
+    line: "Get found",
+    title: "AI visibility",
+    short: "When people ask ChatGPT, Gemini or Claude who to call, I help your business be one of the names they hear.",
+    stops: ["Measure", "Fix", "Re-test"],
+    href: "/services/ai-visibility/",
+    linkLabel: "How AI visibility works",
+    price: "Starts with a free snapshot",
+  },
+  {
+    key: "websites",
+    color: "steel",
+    line: "Get chosen",
+    title: "Websites & online shops",
+    short: "A website built around your brand that's fast on every phone, makes it easy to book or buy, and lets you make your own updates.",
+    stops: ["Design", "Build", "Launch"],
+    href: "/services/#websites",
+    linkLabel: "What a website includes",
+    price: "Fixed quote after a free consultation",
+  },
+  {
+    key: "ai-consulting",
+    color: "charcoal",
+    line: "Run smoother",
+    title: "AI consulting",
+    short: "I find the repetitive work eating your week, then build the automations and tools that take it off your plate, with a person approving anything important.",
+    stops: ["Find", "Build", "Hand over"],
+    href: "/services/ai-consulting/",
+    linkLabel: "How AI consulting works",
+    price: "Fixed quote after a free consultation",
+  },
+];
+
+// What happens after someone gets in touch. Shown on every page next to the consultation form.
+export const NEXT_STEPS = [
+  {
+    title: "Free consultation",
+    body: "We talk about your business and what you need. There's no cost and no obligation.",
+  },
+  {
+    title: "A fixed quote",
+    body: "You get a plan and a fixed price in writing before any work starts.",
+  },
+  {
+    title: "I do the work",
+    body: "I keep you updated along the way, in plain language.",
+  },
+  {
+    title: "Ongoing help",
+    body: "I'm around afterwards for fixes, changes and questions.",
+  },
+];
+
+// ---------- work ----------
+
 export const PROJECTS = [
   {
     // Flagship entry, written for small business owners, not developers.
     title: "Siren's Grotto Book Boutique",
     featured: true,
-    eyebrow: "Featured · Client project",
+    kind: "Client project",
+    line: "steel",
     status: "Live",
     live: true,
     link: "https://sirensgrotto.ca",
@@ -34,14 +97,15 @@ export const PROJECTS = [
       "Real, secure checkout in Canadian dollars, built right into the shop",
       "Sarah runs it herself. Inventory, her monthly featured pick, its blurb and its spice rating all live in a simple spreadsheet, and the site updates itself overnight. She doesn't need a developer for day-to-day changes.",
       "Built around the brand she already had (her colours, her hand-lettered logo, her voice) rather than a template",
+      "Readable by AI assistants and search engines, with a plain-text version of the shop and up-to-date facts they can trust",
     ],
+    caseStudy: { href: "/services/ai-visibility/#case-study", label: "How I made it readable to AI" },
     // Screenshots from Sarah's site on an iPhone, resized to 600px wide.
     shots: [
       { src: "/work/sirens-grotto/descent.jpg", caption: "Arriving in the grotto" },
       { src: "/work/sirens-grotto/shop.jpg", caption: "Browsing the shop on a phone" },
-      { src: "/work/sirens-grotto/cart.jpg", caption: "Cart & secure checkout" },
+      { src: "/work/sirens-grotto/cart.jpg", caption: "Cart and secure checkout" },
     ],
-    cta: "Have a shop, a brand, or an idea you want to bring online? I'd love to build it with you.",
     stack: ["React", "TypeScript", "Vite"],
   },
   {
@@ -59,7 +123,7 @@ export const PROJECTS = [
       "Food tracking with barcode scanning and shareable summaries",
       "Works fully offline, even with no signal",
     ],
-    stack: ["Swift", "SwiftUI"],
+    stack: ["React Native"],
   },
   {
     title: "Waveover",
@@ -78,89 +142,45 @@ export const PROJECTS = [
   },
 ];
 
-export const SERVICES = [
+// What a website includes. Shown on /services.
+export const WEBSITE_FEATURES = [
   {
-    title: "Custom websites",
-    body: "A site designed around your brand, with your colours, your logo and your voice, instead of a template that looks like everyone else's. Fast and good-looking on every phone.",
+    title: "Built around your brand",
+    body: "Your colours, your logo and your voice, instead of a template that looks like everyone else's.",
   },
   {
-    title: "Online shops",
-    body: "Sell online with real, secure checkout. Browsing and buying are designed to feel easy on a phone, because that's where most of your customers are.",
+    title: "Fast on every phone",
+    body: "Most of your customers will find you on a phone, so that's where I design first.",
+  },
+  {
+    title: "Booking, buying or calling, made easy",
+    body: "Whatever you want visitors to do next, the site makes it the obvious thing to do. Online shops get real, secure checkout.",
   },
   {
     title: "Updates you make yourself",
-    body: "Change products, prices or your featured pick from something as simple as a spreadsheet. You don't need to call a developer for everyday changes.",
-  },
-  {
-    title: "Help after launch",
-    body: "I don't disappear once the site is live. If something needs fixing or you want to add something new, you know exactly who to call.",
-  },
-];
-
-export const PROCESS = [
-  {
-    title: "We talk",
-    body: "Tell me about your business, your customers and what you want your website to do. No tech knowledge needed. That part's my job.",
-  },
-  {
-    title: "I design",
-    body: "You see how your site will look and feel before it's built, and we shape it together until it feels like yours.",
-  },
-  {
-    title: "I build",
-    body: "I build it properly: quick to load on phones, secure, and easy for you to look after. You'll see progress along the way.",
-  },
-  {
-    title: "Launch & beyond",
-    body: "We go live, I show you how to make your own updates, and I'm around whenever you need a hand.",
+    body: "Change products, prices or hours from something as simple as a spreadsheet, without calling a developer.",
   },
 ];
 
 export const FACTS = [
   ["Based in", BUSINESS.area],
-  ["Works with", "Shops, makers & small businesses"],
+  ["Works with", "Local and service businesses"],
   ["You deal with", "Me, start to finish"],
-  ["By day", "Software engineer at Equitable Life"],
+  ["By day", "Software engineer"],
 ];
 
-// ---------- services ----------
-
-// The three services, used by the home page teaser and the /services overview.
-export const SERVICE_LINES = [
-  {
-    key: "websites",
-    title: "Websites & online shops",
-    short: "Custom websites and online shops built around your brand, fast on every phone, and easy for you to update.",
-    href: "/#contact",
-    cta: "Talk to me about a website",
-  },
-  {
-    key: "ai-visibility",
-    title: "AI visibility",
-    short: "When homeowners ask ChatGPT, Gemini or Claude who to call, I help your business be one of the names. Starting with roofing and exterior contractors in the GTA.",
-    href: "/services/ai-visibility/",
-    cta: "How AI visibility works",
-    price: "Free snapshot, then from $850 CAD plus HST",
-  },
-  {
-    key: "ai-consulting",
-    title: "AI consulting",
-    short: "I find where AI can save your team time, then build the automations, tools and approval-based AI agents to do it.",
-    href: "/services/ai-consulting/",
-    cta: "How AI consulting works",
-  },
-];
+// ---------- AI visibility ----------
 
 export const VISIBILITY = {
   problem: [
-    "Homeowners can now ask ChatGPT, Gemini or Claude who to call for a new roof or new siding. The answer usually names only a few businesses.",
-    "If yours isn't one of them, that homeowner may never hear your name.",
+    "People can now ask ChatGPT, Gemini or Claude who to call for a plumber, a dentist, an accountant or a cleaner. The answer usually names only a few businesses.",
+    "If yours isn't one of them, that customer may never hear your name.",
     "These tools build their answers from what they can find about you: your Google Business Profile, directory listings, reviews, your website, and what other sites say about you. When those facts are missing, out of date or don't match, you're easy to skip.",
   ],
   steps: [
     {
       title: "Measure",
-      body: "I ask ChatGPT, Gemini and Claude the questions your customers ask, like \"who's the best roofer in Oakville?\", many times over. You get your recommendation rate: how often you're named, and who gets named instead.",
+      body: "I ask ChatGPT, Gemini and Claude the questions your customers ask, like \"who's the best plumber in Mississauga?\", many times over. You get your recommendation rate: how often you're named, and who gets named instead.",
     },
     {
       title: "Fix",
@@ -178,7 +198,7 @@ export const VISIBILITY = {
       priceLabel: "Free",
       blurb: "Who AI names in your town, and whether you're on the list.",
       includes: [
-        "The questions homeowners ask about your trade in your town",
+        "The questions customers ask about your service in your town",
         "Which businesses ChatGPT, Gemini and Claude name",
         "Whether you're named, and how often",
       ],
@@ -187,7 +207,7 @@ export const VISIBILITY = {
       name: "Audit and fix sprint",
       price: 850,
       priceLabel: "$850",
-      unit: "CAD, one time",
+      unit: "one time",
       blurb: "A full test, then I fix what AI reads about your business.",
       includes: [
         "Your full recommendation rate across ChatGPT, Gemini and Claude",
@@ -195,13 +215,12 @@ export const VISIBILITY = {
         "Fixes to the listings, pages and facts AI reads",
         "A written report of what I found and what I changed",
       ],
-      featured: true,
     },
     {
       name: "Monthly tracking",
       price: 299,
       priceLabel: "$299",
-      unit: "CAD a month, 3-month minimum",
+      unit: "a month, 3-month minimum",
       monthly: true,
       blurb: "Re-test every month and keep improving.",
       includes: [
@@ -212,6 +231,56 @@ export const VISIBILITY = {
       ],
     },
   ],
+  // Real client work. Keep it to what's actually been done; add numbers (Search Console,
+  // first AI answer that names the shop) to `outcome` once they exist.
+  caseStudy: {
+    title: "Making Siren's Grotto readable to AI",
+    client: "Siren's Grotto Book Boutique, an independent Canadian online bookshop",
+    link: "https://sirensgrotto.ca",
+    linkLabel: "Visit sirensgrotto.ca",
+    problem: [
+      "Shoppers saw a polished, animated bookshop. The programs that read the web for AI tools saw an empty page, because the shop is built with code that most AI crawlers, including those behind ChatGPT, Claude and Perplexity, don't run.",
+      "So when someone asked an AI assistant where to buy romantasy books in Canada, the shop was invisible. And because the catalogue changes all the time, anything written by hand would go out of date within days.",
+    ],
+    fixes: [
+      {
+        title: "A version of the shop AI can read",
+        body: "Every in-stock book with its author and price in Canadian dollars, plus categories, upcoming market dates, an FAQ and contact details, in plain text that crawlers can read. Shoppers still get the animated store.",
+      },
+      {
+        title: "The facts, in a format machines understand",
+        body: "Structured data that tells search engines and AI assistants what the store sells, who it serves, what things cost, what's in stock, and when the next pop-up markets are.",
+      },
+      {
+        title: "Files written for AI assistants",
+        body: "A plain-language summary of the business and a full catalogue file for AI assistants to read, a sitemap that includes book covers, and a robots.txt that welcomes AI and search crawlers.",
+      },
+      {
+        title: "Links that preview properly",
+        body: "Shared links show the right title, image and description on Instagram, Facebook, iMessage and similar.",
+      },
+    ],
+    upkeep: "All of it is rebuilt from the same inventory the shop runs on, every time the site updates. Sarah doesn't have to maintain any of it.",
+    outcome: "The shop went from invisible to AI crawlers to giving them a complete, accurate picture of its catalogue and business on every page.",
+  },
+  // A made-up example of the monthly report, clearly labelled as such on the page.
+  // No real client or real results.
+  sampleReport: {
+    business: "Example Plumbing Co.",
+    town: "Mississauga",
+    question: "Who's the best plumber in Mississauga?",
+    asked: 20,
+    rows: [
+      { tool: "ChatGPT", before: 2, after: 7 },
+      { tool: "Gemini", before: 0, after: 4 },
+      { tool: "Claude", before: 1, after: 5 },
+    ],
+    notes: [
+      "Fixed: business hours and service area didn't match between Google and the website",
+      "Added: a clear services page for drain cleaning and water heaters",
+      "Still named ahead of you: two competitors with more recent reviews",
+    ],
+  },
   faq: [
     {
       q: "Can you guarantee that AI tools will recommend my business?",
@@ -227,7 +296,7 @@ export const VISIBILITY = {
     },
     {
       q: "Who is this for?",
-      a: "Right now, roofing and exterior contractors in the Greater Toronto Area. If you run a different local service business, get in touch anyway and I'll tell you honestly whether it's a fit.",
+      a: "Local service businesses in the Greater Toronto Area: trades and contractors, clinics, salons, cleaners, law and accounting firms, and similar. If you're not sure, ask and I'll tell you honestly whether it's a fit.",
     },
     {
       q: "What if my recommendation rate doesn't improve?",
@@ -239,6 +308,8 @@ export const VISIBILITY = {
     },
   ],
 };
+
+// ---------- AI consulting ----------
 
 export const CONSULTING = {
   who: [
@@ -262,11 +333,11 @@ export const CONSULTING = {
   ],
   steps: [
     {
-      title: "We talk",
+      title: "Free consultation",
       body: "You tell me how your business runs and where the time goes. If I don't think AI will help, I'll tell you.",
     },
     {
-      title: "A clear plan",
+      title: "A fixed quote",
       body: "I write up what I'd build, how long it will take and what it will cost, before any work starts.",
     },
     {
@@ -275,10 +346,14 @@ export const CONSULTING = {
     },
     {
       title: "Support",
-      body: "I'm around after launch to fix problems and make changes as your needs grow.",
+      body: "I'm around afterwards to fix problems and make changes as your needs grow.",
     },
   ],
   faq: [
+    {
+      q: "How much does it cost?",
+      a: "The consultation is free. After it, you get a fixed price in writing before any work starts, so there are no surprises.",
+    },
     {
       q: "Do I need to be technical to work with you?",
       a: "No. You tell me how your business works and I handle the technical side, explained in plain language.",
@@ -294,10 +369,6 @@ export const CONSULTING = {
     {
       q: "Which AI tools do you use?",
       a: "Whichever fits the job. I'll recommend tools that suit the work, your budget and how you handle your data.",
-    },
-    {
-      q: "How much does it cost?",
-      a: "It depends on the project. You'll get a clear price in writing before any work starts.",
     },
   ],
 };

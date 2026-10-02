@@ -1,13 +1,16 @@
-// Top of a sub page: label, the page's single h1, intro and optional actions.
-export default function PageHero({ label, title, children, actions }) {
+import LineTag from './LineTag'
+
+// Top of a sub page: the service's line tag, the page's single h1, intro and actions.
+// The thick bottom rule is the service's line colour.
+export default function PageHero({ color, line, title, children, actions }) {
   return (
-    <div className="page-hero">
+    <header className={`page-hero${color ? ` line-${color}` : ' all-lines'}`}>
       <div className="wrap">
-        <span className="label rise d1">{label}</span>
-        <h1 className="rise d2">{title}</h1>
-        <div className="page-hero-sub rise d3">{children}</div>
-        {actions && <div className="hero-meta rise d4">{actions}</div>}
+        {line && <LineTag color={color}>{line}</LineTag>}
+        <h1>{title}</h1>
+        <div className="lede">{children}</div>
+        {actions && <div className="actions">{actions}</div>}
       </div>
-    </div>
+    </header>
   )
 }
