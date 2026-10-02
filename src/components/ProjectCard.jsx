@@ -1,10 +1,16 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import useReducedMotion from '../hooks/useReducedMotion'
 
 // Phone-shaped screenshot; shows a labelled placeholder until the image exists.
 function Shot({ src, caption }) {
   const [missing, setMissing] = useState(false)
+  const img = useRef(null)
+  // On prerendered pages the image can fail before React attaches onError.
+  useEffect(() => {
+    const el = img.current
+    if (el && el.complete && el.naturalWidth === 0) setMissing(true)
+  }, [])
   return (
     <figure className="shot">
       <div className="shot-frame">
@@ -15,7 +21,7 @@ function Shot({ src, caption }) {
             coming soon
           </div>
         ) : (
-          <img src={src} alt={caption} loading="lazy" onError={() => setMissing(true)} />
+          <img ref={img} src={src} alt={caption} loading="lazy" onError={() => setMissing(true)} />
         )}
       </div>
       <figcaption>{caption}</figcaption>

@@ -1,0 +1,25 @@
+# Everyone is welcome to crawl this site, including search engines and AI tools.
+User-agent: *
+Allow: /
+
+# Named explicitly so there is no doubt they are allowed.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: CCBot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+Allow: /
+
+Sitemap: https://ethanbrockman.tech/sitemap.xml

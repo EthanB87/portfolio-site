@@ -1,5 +1,6 @@
 import TopoCanvas from './TopoCanvas'
 import Magnetic from './Magnetic'
+import { BUSINESS } from '../data'
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
             Start a project
           </Magnetic>
           <Magnetic href="#work">See my work</Magnetic>
-          <span className="hero-loc">Based in Waterloo, Ontario</span>
+          <span className="hero-loc">Based in the {BUSINESS.area}</span>
         </div>
       </div>
       <div className="scroll-cue">scroll</div>

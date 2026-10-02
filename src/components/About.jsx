@@ -12,9 +12,10 @@ export default function About() {
         <div className="about-grid">
           <Reveal>
             <p>
-              I'm a web designer and developer in Waterloo, Ontario. I build websites and online
-              shops for small businesses, where the owner is often also the buyer, the marketer,
-              and the person answering emails at 10pm.
+              I'm a web designer and developer in the Greater Toronto Area. I build websites and
+              online shops for small businesses, where the owner is often also the buyer, the
+              marketer, and the person answering emails at 10pm. I also help businesses get named
+              when customers ask AI who to call, and put AI to work where it saves time.
             </p>
             <p>
               When you work with me, <b>you work with me</b>. I design it, build it, launch it, and
