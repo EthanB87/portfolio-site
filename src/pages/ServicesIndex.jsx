@@ -16,8 +16,7 @@ export default function ServicesIndex() {
         }
       >
         <p>
-          Three services, all done by me, for local and service businesses in the Greater Toronto
-          Area. Not sure which you need? That's what the free consultation is for.
+          Three services, all done by me, for local and service businesses in Ontario. Not sure which you need? That's what the free consultation is for.
         </p>
       </PageHero>
 

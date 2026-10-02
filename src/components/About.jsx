@@ -9,7 +9,7 @@ export default function About() {
         <div>
           <h2>Hi, I'm Ethan.</h2>
           <p>
-            I'm a software engineer in the Greater Toronto Area, and I work with local and service
+            I'm a software engineer in Ontario, and I work with local and service
             businesses in three ways. I help you <b className="key line-orange">get found</b> when people ask AI who to call. I
             build websites and online shops that help you <b className="key line-steel">get chosen</b>. And I take the
             repetitive work off your plate with practical AI, so your business can{' '}

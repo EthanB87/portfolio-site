@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero-copy">
           <h1>Your business, on the map.</h1>
           <p className="lede">
-            I'm Ethan Brockman. I help local businesses in the Greater Toronto Area get found when
+            I'm Ethan Brockman. I help local businesses in Ontario get found when
             people ask AI who to call, win customers with a website that works on every phone, and
             save hours with practical automation.
           </p>

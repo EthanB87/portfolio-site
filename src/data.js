@@ -7,7 +7,7 @@ export const BUSINESS = {
   name: "Ethan Brockman",
   url: "https://ethanbrockman.tech",
   email: "ethanabrockman@gmail.com",
-  area: "Greater Toronto Area, Ontario",
+  area: "Ontario",
 };
 
 export const LINKS = {
@@ -296,7 +296,7 @@ export const VISIBILITY = {
     },
     {
       q: "Who is this for?",
-      a: "Local service businesses in the Greater Toronto Area: trades and contractors, clinics, salons, cleaners, law and accounting firms, and similar. If you're not sure, ask and I'll tell you honestly whether it's a fit.",
+      a: "Local service businesses in Ontario: trades and contractors, clinics, salons, cleaners, law and accounting firms, and similar. If you're not sure, ask and I'll tell you honestly whether it's a fit.",
     },
     {
       q: "What if my recommendation rate doesn't improve?",
@@ -373,11 +373,3 @@ export const CONSULTING = {
   ],
 };
 
-// Areas served, used in JSON-LD. Together these make up the GTA.
-export const GTA_AREAS = [
-  "City of Toronto",
-  "Peel Region",
-  "York Region",
-  "Durham Region",
-  "Halton Region",
-];
