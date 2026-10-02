@@ -1,36 +1,29 @@
-import TopoCanvas from './TopoCanvas'
-import Magnetic from './Magnetic'
+import RouteMap from './RouteMap'
+import CallButton from './CallButton'
 
 export default function Hero() {
   return (
-    <header id="top">
-      <TopoCanvas />
-      <div className="hero-fade" />
-      <div className="hero-inner">
-        <div className="eyebrow rise d1">
-          Full-stack engineer · React / TypeScript / .NET / Azure
+    <header id="top" className="hero">
+      <div className="wrap hero-grid">
+        <div className="hero-copy">
+          <h1>Your business, on the map.</h1>
+          <p className="lede">
+            I'm Ethan Brockman. I help local businesses in the Greater Toronto Area get found when
+            people ask AI who to call, win customers with a website that works on every phone, and
+            save hours with practical automation.
+          </p>
+          <p className="lede">Every project starts with a free consultation.</p>
+          <div className="actions">
+            <a className="btn primary" href="#consult">
+              Book a free consultation
+            </a>
+            <CallButton />
+          </div>
         </div>
-        <h1 className="rise d2">
-          Engineering products
-          <br />
-          from <span className="ember">pixel</span> to pipeline.
-        </h1>
-        <p className="hero-sub rise d3">
-          I'm <b>Ethan Brockman</b>, a full-stack engineer who does his best work on the front end.
-          I build React and TypeScript products, from the interface down to the APIs and cloud they
-          run on. Then I ship them and keep them running when real people are using them.
-        </p>
-        <div className="hero-meta rise d4">
-          <Magnetic href="#work" className="primary">
-            View selected work
-          </Magnetic>
-          <Magnetic href="#contact">Get in touch</Magnetic>
-          <span className="hero-loc">
-            ⌖ Waterloo, Ontario — open to full-stack &amp; front-end roles
-          </span>
+        <div className="map-board">
+          <RouteMap />
         </div>
       </div>
-      <div className="scroll-cue">scroll</div>
     </header>
   )
 }
