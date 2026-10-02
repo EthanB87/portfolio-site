@@ -1,26 +1,40 @@
+import { FACTS } from '../data'
 import Reveal from './Reveal'
 
 export default function About() {
   return (
-    <section id="about" style={{ borderTop: '1px solid var(--line)' }}>
+    <section id="about">
       <div className="wrap">
         <Reveal className="sec-head">
-          <h2>About</h2>
-          <span className="sec-note">{'// the short version'}</span>
+          <span className="label">About</span>
+          <h2>Hi, I'm Ethan.</h2>
         </Reveal>
-        <div className="about-grid single">
+        <div className="about-grid">
           <Reveal>
             <p>
-              I'm a full-stack engineer in Waterloo. I care about how software{' '}
-              <b>feels to use</b>, and I get to prove it at every layer. By day I build and run
-              production systems at Equitable Life. Nights and weekends I build my own products and
-              take on the occasional client, and I handle all of it, from the design down to the
-              support emails.
+              I'm a web designer and developer in Waterloo, Ontario. I build websites and online
+              shops for small businesses, where the owner is often also the buyer, the marketer,
+              and the person answering emails at 10pm.
             </p>
             <p>
-              I'm looking for a team where front-end craft is taken seriously and engineers are
-              trusted with the whole problem.
+              When you work with me, <b>you work with me</b>. I design it, build it, launch it, and
+              stick around afterwards. By day I'm a software engineer at Equitable Life, building
+              systems thousands of people rely on, and your site gets the same care.
             </p>
+            <p>
+              I care about how a website <b>feels</b> to your customers and whether it actually
+              helps your business, not just whether it looks nice.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="fact-list">
+              {FACTS.map(([k, v]) => (
+                <div key={k} className="fact">
+                  <span className="k">{k}</span>
+                  <span className="v">{v}</span>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </div>

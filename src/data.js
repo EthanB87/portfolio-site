@@ -1,4 +1,4 @@
-// All site content lives here — edit this file to update the portfolio.
+// All site content lives here. Edit this file to update the site.
 
 export const LINKS = {
   email: "ethanabrockman@gmail.com",
@@ -8,125 +8,109 @@ export const LINKS = {
 
 export const PROJECTS = [
   {
+    // Flagship entry, written for small business owners, not developers.
     title: "Siren's Grotto Book Boutique",
+    featured: true,
+    eyebrow: "Featured · Client project",
     status: "Live",
     live: true,
     link: "https://sirensgrotto.ca",
-    blurb:
-      "A phone-first bookshop for an independent Canadian seller. You arrive through a hand-built underwater loader, then browse by category or trope and check out in CAD. It's a real store, built mobile-first and fast enough to feel like one.",
-    feats: [
-      "Hand-rolled SVG/canvas 'descent into the grotto' loader — 60fps, reduced-motion aware",
-      "Phone-first purchase path: category → trope filter → themed cart → Stripe (CAD)",
-      "WCAG AA + Lighthouse mobile 90+ — ≥44px targets, focus rings, transform/opacity-only animation",
-      "Locked six-hex brand system enforced via design tokens — no hardcoded colors or fonts",
+    linkLabel: "sirensgrotto.ca",
+    story: [
+      "Sarah runs Siren's Grotto, a small independent bookshop in Canada. She was launching an online shop alongside her market pop-ups, with a mobile book trailer on the way in 2027. She needed a website that felt like her brand and actually sold books.",
+      "Visitors arrive through a one-of-a-kind descent into the grotto, a short underwater animation that sets the mood before the shop opens up. From there, readers browse by genre or by mood, add books to a cart that looks like the rest of the shop, and check out securely in Canadian dollars.",
     ],
-    stack: ["React", "TypeScript", "Vite", "Framer Motion", "Stripe (CAD)"],
+    feats: [
+      "Made for phones first, because that's where almost all of Sarah's customers shop. It loads fast on any of them.",
+      "Real, secure checkout in Canadian dollars, built right into the shop",
+      "Sarah runs it herself. Inventory, her monthly featured pick, its blurb and its spice rating all live in a simple spreadsheet, and the site updates itself overnight. She doesn't need a developer for day-to-day changes.",
+      "Built around the brand she already had (her colours, her hand-lettered logo, her voice) rather than a template",
+    ],
+    // Screenshots from Sarah's site on an iPhone, resized to 600px wide.
+    shots: [
+      { src: "/work/sirens-grotto/descent.jpg", caption: "Arriving in the grotto" },
+      { src: "/work/sirens-grotto/shop.jpg", caption: "Browsing the shop on a phone" },
+      { src: "/work/sirens-grotto/cart.jpg", caption: "Cart & secure checkout" },
+    ],
+    cta: "Have a shop, a brand, or an idea you want to bring online? I'd love to build it with you.",
+    stack: ["React", "TypeScript", "Vite"],
   },
   {
     title: "Apsis",
-    status: "In build",
-    live: true,
+    kind: "My own product",
+    status: "In progress",
+    live: false,
     link: "https://apsistraining.com",
     repo: "https://github.com/EthanB87/Apsis",
     blurb:
-      "A training tracker for hybrid athletes on iOS. It logs your lifting and running in one place, then rolls both into a single training-load score you can actually act on.",
+      "An iPhone app for people who both lift weights and run. It keeps all their training in one place and turns it into one simple score, so they know whether to push hard today or take it easy.",
     feats: [
-      "Hybrid Stress Score (HSS) — one training-load number across lifting & running",
-      "Green/amber/red readiness bands + Apple Health integration",
-      "Nutrition tracking with barcode scanning & shareable summary cards",
-      "Offline-first — fully functional with no connection",
+      "Green, amber or red at a glance: how ready you are to train today",
+      "Connects with Apple Health",
+      "Food tracking with barcode scanning and shareable summaries",
+      "Works fully offline, even with no signal",
     ],
-    stack: ["Swift", "SwiftUI", "HealthKit", "Offline-first"],
+    stack: ["Swift", "SwiftUI"],
   },
   {
     title: "Waveover",
-    status: "In build",
+    kind: "My own product",
+    status: "In progress",
     live: false,
     repo: "https://github.com/EthanB87/Waveover",
     blurb:
-      "One inbox on your phone for every AI agent that needs a human. It's open-source and self-hostable, and the notifications carry one-tap respond and approve, so you can unblock an agent from anywhere.",
+      "One inbox on your phone for every AI assistant that needs a person to sign off. When an AI tool is waiting on a decision, you get a notification and can approve it with one tap, from anywhere.",
     feats: [
-      "Vendor-neutral — any agent that can hit a webhook: Claude Code, Codex, n8n, GitHub Actions",
-      "Fully self-hostable, zero third-party services (Web Push via standard VAPID)",
-      "Installable PWA with iOS push + add-to-home-screen flow",
-      "One-tap respond/approve unblocks the agent live in its terminal",
+      "One-tap approve or reply, right from the notification",
+      "Installs on your phone like an app",
+      "Free and open source",
     ],
-    stack: ["TypeScript", "Node / Drizzle", "React + Vite PWA", "Web Push (VAPID)", "CLI (Commander)"],
+    stack: ["TypeScript", "React"],
   },
 ];
 
-export const TIMELINE = [
+export const SERVICES = [
   {
-    when: "2023 — PRESENT",
-    now: true,
-    role: "Software Engineer",
-    org: "Equitable Life of Canada · Waterloo, ON",
-    body: "Full-stack work on insurance products used by thousands of advisors and policyholders. I build React and TypeScript front ends over .NET services on Azure. I'm also on call for what I ship, so the monitoring is mine and so are the incidents when something breaks at 2am.",
+    title: "Custom websites",
+    body: "A site designed around your brand, with your colours, your logo and your voice, instead of a template that looks like everyone else's. Fast and good-looking on every phone.",
   },
   {
-    when: "ONGOING",
-    now: false,
-    role: "Independent Builder",
-    org: "Own Products & Client Work",
-    body: "Designing and building products end to end, for myself and for clients. Recent work runs from a storefront for an indie bookseller to an iOS training tracker to an open-source tool for other developers. When it's my own, I handle all of it — the UI, the APIs behind it, the billing, and the slow work of getting anyone to use it.",
+    title: "Online shops",
+    body: "Sell online with real, secure checkout. Browsing and buying are designed to feel easy on a phone, because that's where most of your customers are.",
   },
   {
-    when: "2023 — 2026",
-    now: false,
-    role: "Diploma, Computer Programming & Analysis",
-    org: "Conestoga College · 3.9 GPA",
-    body: "Coursework in cloud-native development — Node.js, Docker, .NET APIs — plus IT entrepreneurship, where I wrote a full B2B SaaS business plan and pitched it to investors.",
+    title: "Updates you make yourself",
+    body: "Change products, prices or your featured pick from something as simple as a spreadsheet. You don't need to call a developer for everyday changes.",
+  },
+  {
+    title: "Help after launch",
+    body: "I don't disappear once the site is live. If something needs fixing or you want to add something new, you know exactly who to call.",
+  },
+];
+
+export const PROCESS = [
+  {
+    title: "We talk",
+    body: "Tell me about your business, your customers and what you want your website to do. No tech knowledge needed. That part's my job.",
+  },
+  {
+    title: "I design",
+    body: "You see how your site will look and feel before it's built, and we shape it together until it feels like yours.",
+  },
+  {
+    title: "I build",
+    body: "I build it properly: quick to load on phones, secure, and easy for you to look after. You'll see progress along the way.",
+  },
+  {
+    title: "Launch & beyond",
+    body: "We go live, I show you how to make your own updates, and I'm around whenever you need a hand.",
   },
 ];
 
 export const FACTS = [
-  ["FOCUS", "Front-end-leaning full stack"],
-  ["DAILY DRIVERS", "React · TypeScript · .NET"],
-  ["CLOUD", "Azure · Docker · CI/CD"],
-  ["ON-CALL", "Yes — and I own incidents"],
-  ["BASED IN", "Waterloo, Ontario"],
+  ["Based in", "Waterloo, Ontario"],
+  ["Works with", "Shops, makers & small businesses"],
+  ["You deal with", "Me, start to finish"],
+  ["By day", "Software engineer at Equitable Life"],
 ];
 
-export const SKILLS = [
-  {
-    head: "Front end",
-    items: [
-      ["React", "+ hooks & patterns", true],
-      ["TypeScript", "", true],
-      ["Nuxt 3 / Vue", ""],
-      ["Tailwind CSS", ""],
-      ["Vite, component systems", ""],
-      ["Swift", ""],
-      ["SwiftUI", ""],
-    ],
-  },
-  {
-    head: "Back end",
-    items: [
-      [".NET / C#", "APIs", true],
-      ["Node.js", ""],
-      ["SQL & PostgreSQL", ""],
-      ["REST design & integrations", ""],
-    ],
-  },
-  {
-    head: "Cloud & ops",
-    items: [
-      ["Azure", "", true],
-      ["Docker & Compose", ""],
-      ["CI/CD pipelines", ""],
-      ["Monitoring & on-call", ""],
-      ["GitHub Actions", ""],
-    ],
-  },
-  {
-    head: "Product",
-    items: [
-      ["LLM features", "in production", true],
-      ["POS & third-party APIs", ""],
-      ["Stripe billing", ""],
-      ["UI/UX & brand sensibility", ""],
-      ["Go-to-market research", ""],
-    ],
-  },
-];

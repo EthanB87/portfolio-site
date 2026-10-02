@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react'
 
 const SECTIONS = [
   ['work', 'Work'],
-  ['experience', 'Experience'],
-  ['skills', 'Stack'],
+  ['services', 'Services'],
+  ['process', 'How it works'],
   ['about', 'About'],
-  ['contact', 'Contact'],
 ]
 
-export default function Nav({ onPalette }) {
+export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
 
@@ -30,9 +29,7 @@ export default function Nav({ onPalette }) {
     <nav className={scrolled ? 'scrolled' : ''}>
       <a className="logo" href="#top">
         <span className="dot" />
-        <span>
-          eb<b>/</b>ethan.brockman
-        </span>
+        Ethan Brockman
       </a>
       <div className="nav-links">
         {SECTIONS.map(([id, label]) => (
@@ -40,9 +37,9 @@ export default function Nav({ onPalette }) {
             {label}
           </a>
         ))}
-        <button className="kbd-hint" onClick={onPalette} aria-label="Open command palette">
-          ⌘K
-        </button>
+        <a href="#contact" className="nav-cta">
+          Start a project
+        </a>
       </div>
     </nav>
   )

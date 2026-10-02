@@ -172,8 +172,8 @@ export default function TopoCanvas() {
         const major = k % 2 === 0
         const col =
           k >= LEVELS.length - 2
-            ? `rgba(255,122,89,${major ? 0.2 : 0.12})`
-            : `rgba(111,140,125,${major ? 0.3 : 0.15})`
+            ? `rgba(180,73,42,${major ? 0.32 : 0.18})`
+            : `rgba(63,107,87,${major ? 0.26 : 0.13})`
         drawLevel(LEVELS[k], col, major ? 1.1 : 0.6)
       }
       t += 0.016

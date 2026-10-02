@@ -1,40 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Work from './components/Work'
-import Experience from './components/Experience'
-import Skills from './components/Skills'
+import Services from './components/Services'
+import Process from './components/Process'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import CommandPalette from './components/CommandPalette'
 
 export default function App() {
-  const [paletteOpen, setPaletteOpen] = useState(false)
-  const [toast, setToast] = useState(null)
-  const toastTimer = useRef(null)
   const progressRef = useRef(null)
-
-  const notify = useCallback((msg) => {
-    setToast(msg)
-    clearTimeout(toastTimer.current)
-    toastTimer.current = setTimeout(() => setToast(null), 2200)
-  }, [])
-
-  const openPalette = useCallback(() => setPaletteOpen(true), [])
-  const closePalette = useCallback(() => setPaletteOpen(false), [])
-
-  // global ⌘K / Ctrl+K
-  useEffect(() => {
-    const onKey = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault()
-        setPaletteOpen((o) => !o)
-      }
-    }
-    addEventListener('keydown', onKey)
-    return () => removeEventListener('keydown', onKey)
-  }, [])
 
   // scroll progress bar
   useEffect(() => {
@@ -50,18 +25,14 @@ export default function App() {
   return (
     <>
       <div id="progress" ref={progressRef} />
-      <Nav onPalette={openPalette} />
+      <Nav />
       <Hero />
       <Work />
-      <Experience />
-      <Skills />
+      <Services />
+      <Process />
       <About />
       <Contact />
-      <Footer onPalette={openPalette} />
-      <CommandPalette open={paletteOpen} onClose={closePalette} notify={notify} />
-      <div id="toast" className={toast ? 'show' : ''}>
-        {toast}
-      </div>
+      <Footer />
     </>
   )
 }

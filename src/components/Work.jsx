@@ -7,8 +7,8 @@ export default function Work() {
     <section id="work">
       <div className="wrap">
         <Reveal className="sec-head">
-          <h2>Selected work</h2>
-          <span className="sec-note">{'// products built & shipped end-to-end'}</span>
+          <span className="label">Recent work</span>
+          <h2>Built for real businesses and real customers.</h2>
         </Reveal>
         <div className="work-grid">
           {PROJECTS.map((p, i) => (

@@ -7,27 +7,21 @@ export default function Hero() {
       <TopoCanvas />
       <div className="hero-fade" />
       <div className="hero-inner">
-        <div className="eyebrow rise d1">
-          Full-stack engineer · React / TypeScript / .NET / Azure
-        </div>
+        <div className="eyebrow label rise d1">Websites &amp; online shops for small businesses</div>
         <h1 className="rise d2">
-          Engineering products
-          <br />
-          from <span className="ember">pixel</span> to pipeline.
+          A website that feels like <em>your</em> business.
         </h1>
         <p className="hero-sub rise d3">
-          I'm <b>Ethan Brockman</b>, a full-stack engineer who does his best work on the front end.
-          I build React and TypeScript products, from the interface down to the APIs and cloud they
-          run on. Then I ship them and keep them running when real people are using them.
+          I'm <b>Ethan Brockman</b>. I design and build custom websites and online shops for small
+          businesses. Each one is built around your brand, fast on every phone, and easy for you to
+          update yourself.
         </p>
         <div className="hero-meta rise d4">
-          <Magnetic href="#work" className="primary">
-            View selected work
+          <Magnetic href="#contact" className="primary">
+            Start a project
           </Magnetic>
-          <Magnetic href="#contact">Get in touch</Magnetic>
-          <span className="hero-loc">
-            ⌖ Waterloo, Ontario — open to full-stack &amp; front-end roles
-          </span>
+          <Magnetic href="#work">See my work</Magnetic>
+          <span className="hero-loc">Based in Waterloo, Ontario</span>
         </div>
       </div>
       <div className="scroll-cue">scroll</div>
